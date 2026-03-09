@@ -7,3 +7,7 @@
   --primary-font: "Lato", sans-serif;
   --secondary-font: "Atma", system-ui;
 }
+
+main {
+    padding-bottom: 80px;
+}
