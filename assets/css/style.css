@@ -3,11 +3,37 @@
 
 /* CSS Variables */
 
+
+
 :root {
   --primary-font: "Lato", sans-serif;
   --secondary-font: "Atma", system-ui;
 }
 
+body {
+  background-color: aliceblue;
+  margin: 0;
+  font-family: var(--primary-font);
+}
+
+h1 {
+  font-family: var(--secondary-font);
+}
+
 main {
     padding-bottom: 80px;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border: 2px dashed darkorchid;
 }
+
+section {
+  border: 2px dashed darkblue;
+}
+
+#start-btn, #replay-btn {
+  font-family: var(--secondary-font);
+}
+
