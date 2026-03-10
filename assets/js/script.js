@@ -73,7 +73,23 @@ function startGame() {
  * user click triggers checkAnswer()
  */
 function displayCapitalQuestion() {
-    console.log("capital");
+    
+    const selectedCountry = getUnusedCountry();
+    const wrongAnswers = getWrongCapitals(selectedCountry);
+    
+    game.currentCountry = selectedCountry;
+    game.correctAnswer = selectedCountry.capital;
+    
+    let options = wrongAnswers;
+    const randomPosition = Math.floor(Math.random() * 4);
+    options.splice(randomPosition, 0, selectedCountry.capital);
+
+    game.options = options;
+    game.usedCountries.push(selectedCountry.name);
+
+    console.log("Current country:", game.currentCountry);
+    console.log("Correct answer:", game.correctAnswer);
+    console.log("Options:", game.options);
 }
 
 
@@ -87,6 +103,57 @@ function displayCapitalQuestion() {
  */
 function displayFlagQuestion() {
     console.log("flag");
+}
+
+
+/**
+ * selects a random country that has not been used in the current game
+ * filters out already used countries and returns one random country
+ */
+
+function getUnusedCountry() {
+
+    // create an array containing only countries that have not been used
+    const unusedCountries = countries.filter(country => !game.usedCountries.includes(country.name));
+
+    // generate a random index within the range of the  unusedCountries array
+    const randomIndex = Math.floor(Math.random() * unusedCountries.length);
+
+    //return the country at that random position
+    return unusedCountries[randomIndex];
+
+}
+
+
+/**
+ * returns three wrong capital answers for the current question
+ * excludes the correct country and randomly selects three different capitals
+ */
+
+function getWrongCapitals(correctCountry) {
+
+    // create an array of countries excluding the correct one
+    const wrongCountries = countries.filter(country => 
+        country.name !== correctCountry.name
+    );
+
+    const wrongCapitals = [];
+
+    while (wrongCapitals.length < 3) {
+        const randomIndex = Math.floor(Math.random() * wrongCountries.length);
+        const randomCapital = wrongCountries[randomIndex].capital;
+
+        if (!wrongCapitals.includes(randomCapital)) {
+            wrongCapitals.push(randomCapital);
+        }
+    }
+
+    return wrongCapitals;
+}
+
+
+function renderCapitalQuestion() {
+
 }
 
 
