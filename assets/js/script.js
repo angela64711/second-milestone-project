@@ -41,16 +41,26 @@ function readModal() {
 
 /**
  * initializes and resets the game state
- * sets of resets:
- * game.currentQuestion = 1
- * game.score = 0
- * game.currentCountry = null
- * game.correctAnswer = ""
- * game.options = []
- * game.usedCountries = []
- * calls display*Question()
+ * calls the appropriate display*Question()
 */
 function startGame() {
+
+    // Reset game state
+    game.currentQuestion = 1;
+    game.score = 0;
+    game.currentCountry = null;
+    game.correctAnswer = "";
+    game.options = [];
+    game.usedCountries = [];
+
+    // Display first question based on game mode
+    if (game.mode === "capital") {
+        displayCapitalQuestion();
+    } else if (game.mode === "flag") {
+        displayFlagQuestion();
+    }
+
+    console.log("Game initialized:", game);
 
 }
 
@@ -63,7 +73,7 @@ function startGame() {
  * user click triggers checkAnswer()
  */
 function displayCapitalQuestion() {
-
+    console.log("capital");
 }
 
 
@@ -76,7 +86,7 @@ function displayCapitalQuestion() {
  * user click triggers checkAnswer()
  */
 function displayFlagQuestion() {
-
+    console.log("flag");
 }
 
 
