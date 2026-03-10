@@ -11,12 +11,18 @@ const game = {
     usedCountries: []       //countries already used in this round(prevents duplicates)
 } ;
 
+document.getElementById("begin-game-btn").addEventListener("click", readModal);
 
 function readModal() {
   /**
   * sets game.mode and game.totalQuestions
   * calls startGame()
   */
+ let mode = document.querySelector("[checked]");
+ let number = document.querySelector("[selected]");
+ 
+ console.log(mode);
+ console.log(number);
 
 }
 
