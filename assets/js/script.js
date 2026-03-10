@@ -1,15 +1,25 @@
-
-
 const game = {
-    mode: "",               //"capital" or "flag"
-    totalQuestions: 0,      //number chosen in the modal
-    currentQuestion: 1,     //which question the player is on
-    score: 0,               //number of correct answers
-    currentCountry: null,   //country object selected in the current round
-    correctAnswer: "",      //correct answer for this round
-    options: [],            //the 4 answer choices for this round
-    usedCountries: []       //countries already used in this round(prevents duplicates)
-} ;
+    mode: "", //"capital" or "flag"
+    totalQuestions: 0, //number chosen in the modal
+    currentQuestion: 1, //which question the player is on
+    score: 0, //number of correct answers
+    currentCountry: null, //country object selected in the current round
+    correctAnswer: "", //correct answer for this round
+    options: [], //the 4 answer choices for this round
+    usedCountries: [] //countries already used in this round(prevents duplicates)
+};
+
+const questionCounter = document.getElementById("question-counter");
+const questionText = document.getElementById("question");
+const flagImg = document.getElementById("flag-img");
+const answerButtons = document.querySelectorAll(".answer-btn");
+
+
+/**
+ * attach click listener to the Start Game button
+ * the existence check ensures the script only runs on pages
+ * where this button is present, preventing errors on other pages
+ */
 
 let beginGameBtn = document.getElementById("begin-game-btn");
 let replayBtn = document.getElementById("replay-btn");
@@ -23,26 +33,36 @@ if (replayBtn) {
 }
 
 /**
-  * reads the user's inputs in the modal
-  * sets game.mode and game.totalQuestions
-  * calls startGame()
-  */
+ * reads the user's quiz settings from the modal,
+ * saves them to localStorage, and opens the quiz page
+ */
 function readModal() {
-  
- let mode = document.querySelector('input[name="game-mode"]:checked').value;
- let number = document.getElementById("question-count").value;
 
- game.mode = mode;
- game.totalQuestions = Number(number);
+    let mode = document.querySelector('input[name="game-mode"]:checked').value;
+    let number = document.getElementById("question-count").value;
 
- startGame();
-     
+    localStorage.setItem("gameMode", mode);
+    localStorage.setItem("totalQuestions", number);
+
+    window.location.href = "quiz.html";
+
 }
+
+function loadGameSettings() {
+    game.mode = localStorage.getItem("gameMode");
+    game.totalQuestions = Number(localStorage.getItem("totalQuestions"));
+}
+
+if (questionCounter) {
+    loadGameSettings();
+    startGame();
+}
+
 
 /**
  * initializes and resets the game state
  * calls the appropriate display*Question()
-*/
+ */
 function startGame() {
 
     // Reset game state
@@ -73,23 +93,29 @@ function startGame() {
  * user click triggers checkAnswer()
  */
 function displayCapitalQuestion() {
-    
+
     const selectedCountry = getUnusedCountry();
     const wrongAnswers = getWrongCapitals(selectedCountry);
-    
+
     game.currentCountry = selectedCountry;
     game.correctAnswer = selectedCountry.capital;
-    
-    let options = wrongAnswers;
+
+    let options = [...wrongAnswers];
     const randomPosition = Math.floor(Math.random() * 4);
     options.splice(randomPosition, 0, selectedCountry.capital);
 
     game.options = options;
     game.usedCountries.push(selectedCountry.name);
 
-    console.log("Current country:", game.currentCountry);
-    console.log("Correct answer:", game.correctAnswer);
-    console.log("Options:", game.options);
+    questionCounter.innerText = `Question ${game.currentQuestion} of ${game.totalQuestions}`;
+    questionText.innerText = `What is the capital of ${game.currentCountry.name}?`;
+    flagImg.src = `assets/images/flags/${game.currentCountry.code}.png`;
+    flagImg.alt = `Flag of ${game.currentCountry.name}`;
+
+    answerButtons.forEach((button, index) => {
+        button.innerText = game.options[index];
+    });
+
 }
 
 
@@ -102,7 +128,29 @@ function displayCapitalQuestion() {
  * user click triggers checkAnswer()
  */
 function displayFlagQuestion() {
-    console.log("flag");
+
+    const selectedCountry = getUnusedCountry();
+    const wrongAnswers = getWrongCountryNames(selectedCountry);
+
+    game.currentCountry = selectedCountry;
+    game.correctAnswer = selectedCountry.name;
+
+    let options = [...wrongAnswers];
+    const randomPosition = Math.floor(Math.random() * 4);
+    options.splice(randomPosition, 0, selectedCountry.name);
+
+    game.options = options;
+    game.usedCountries.push(selectedCountry.name);
+
+    questionCounter.innerText = `Question ${game.currentQuestion} of ${game.totalQuestions}`;
+    questionText.innerText = "Which country does this flag belong to?";
+    flagImg.src = `assets/images/flags/${game.currentCountry.code}.png`;
+    flagImg.alt = `Flag of ${game.currentCountry.name}`;
+
+    answerButtons.forEach((button, index) => {
+        button.innerText = game.options[index];
+    });
+
 }
 
 
@@ -133,7 +181,7 @@ function getUnusedCountry() {
 function getWrongCapitals(correctCountry) {
 
     // create an array of countries excluding the correct one
-    const wrongCountries = countries.filter(country => 
+    const wrongCountries = countries.filter(country =>
         country.name !== correctCountry.name
     );
 
@@ -152,8 +200,28 @@ function getWrongCapitals(correctCountry) {
 }
 
 
-function renderCapitalQuestion() {
+/**
+ * returns three wrong country names for the current question
+ * excludes the correct country and randomly selects three different country names
+ */
 
+function getWrongCountryNames(correctCountry) {
+    const wrongCountries = countries.filter(country =>
+        country.name !== correctCountry.name
+    );
+
+    const wrongCountryNames = [];
+
+    while (wrongCountryNames.length < 3) {
+        const randomIndex = Math.floor(Math.random() * wrongCountries.length);
+        const randomCountryName = wrongCountries[randomIndex].name;
+
+        if (!wrongCountryNames.includes(randomCountryName)) {
+            wrongCountryNames.push(randomCountryName);
+        }
+    }
+
+    return wrongCountryNames;
 }
 
 
