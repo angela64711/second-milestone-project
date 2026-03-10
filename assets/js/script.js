@@ -12,18 +12,21 @@ const game = {
 } ;
 
 document.getElementById("begin-game-btn").addEventListener("click", readModal);
+document.getElementById("replay-btn").addEventListener("click", readModal);
 
 function readModal() {
   /**
   * sets game.mode and game.totalQuestions
   * calls startGame()
   */
- let mode = document.querySelector("[checked]");
- let number = document.querySelector("[selected]");
- 
- console.log(mode);
- console.log(number);
+ let mode = document.querySelector('input[name="game-mode"]:checked').value;
+ let number = document.getElementById("question-count").value;
 
+ game.mode = mode;
+ game.totalQuestions = Number(number);
+
+ startGame();
+     
 }
 
 function startGame() {
