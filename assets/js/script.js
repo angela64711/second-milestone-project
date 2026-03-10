@@ -11,14 +11,24 @@ const game = {
     usedCountries: []       //countries already used in this round(prevents duplicates)
 } ;
 
-document.getElementById("begin-game-btn").addEventListener("click", readModal);
-document.getElementById("replay-btn").addEventListener("click", readModal);
+let beginGameBtn = document.getElementById("begin-game-btn");
+let replayBtn = document.getElementById("replay-btn");
 
-function readModal() {
-  /**
+if (beginGameBtn) {
+    beginGameBtn.addEventListener("click", readModal);
+}
+
+if (replayBtn) {
+    replayBtn.addEventListener("click", readModal);
+}
+
+/**
+  * reads the user's inputs in the modal
   * sets game.mode and game.totalQuestions
   * calls startGame()
   */
+function readModal() {
+  
  let mode = document.querySelector('input[name="game-mode"]:checked').value;
  let number = document.getElementById("question-count").value;
 
@@ -29,7 +39,6 @@ function readModal() {
      
 }
 
-function startGame() {
 /**
  * initializes and resets the game state
  * sets of resets:
@@ -41,10 +50,23 @@ function startGame() {
  * game.usedCountries = []
  * calls display*Question()
 */
+function startGame() {
+
 }
 
-
+/**
+ * prepares the round (choose valid country and 3 wrong ones, shuffle, push to buttons)
+ * sets game.currentCountry, game.correctAnswer, game.options
+ * updates game.usedCountries (add current country)
+ * displays question and answers
+ * waits for user click
+ * user click triggers checkAnswer()
+ */
 function displayCapitalQuestion() {
+
+}
+
+
 /**
  * prepares the round (choose valid country and 3 wrong ones, shuffle, push to buttons)
  * sets game.currentCountry, game.correctAnswer, game.options
@@ -53,20 +75,11 @@ function displayCapitalQuestion() {
  * waits for user click
  * user click triggers checkAnswer()
  */
-}
-
 function displayFlagQuestion() {
-/**
- * prepares the round (choose valid country and 3 wrong ones, shuffle, push to buttons)
- * sets game.currentCountry, game.correctAnswer, game.options
- * updates game.usedCountries (add current country)
- * displays question and answers
- * waits for user click
- * user click triggers checkAnswer()
- */
+
 }
 
-function checkAnswer() {
+
 /**
  * compares clicked answer with game.correctAnswer
  * calls lightsOn() (visual feedback)
@@ -74,20 +87,28 @@ function checkAnswer() {
  * waits 3 seconds and then
  * calls advanceGame()
  */
+function checkAnswer() {
+
 }
 
-function lightsOn() {
+
 /**
  * turn correct answer green
  * if user is wrong, turn user answer red
  */
+function lightsOn() {
+
 }
 
+
+/**
+ * increments game.score (if correct)
+ * */
 function updateScore() {
-//increments game.score (if correct)
+
 }
 
-function advanceGame() {
+
 /**
  * removes highlight classes from buttons
  * sets game.currentQuestion += 1
@@ -95,13 +116,17 @@ function advanceGame() {
  * yes-> show next question, call display*Question
  * no -> end game, call displayResult
  */
+function advanceGame() {
+
 }
 
-function displayResult() {
+
 /**
  * reads game.score and
  * game.totalQuestions
  * displays final score and
  * message
  */
+function displayResult() {
+
 }
