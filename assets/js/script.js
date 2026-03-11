@@ -22,14 +22,9 @@ const answerButtons = document.querySelectorAll(".answer-btn");
  */
 
 let beginGameBtn = document.getElementById("begin-game-btn");
-let replayBtn = document.getElementById("replay-btn");
 
 if (beginGameBtn) {
     beginGameBtn.addEventListener("click", readModal);
-}
-
-if (replayBtn) {
-    replayBtn.addEventListener("click", readModal);
 }
 
 /**
@@ -55,6 +50,11 @@ function readModal() {
 function loadGameSettings() {
     game.mode = localStorage.getItem("gameMode");
     game.totalQuestions = Number(localStorage.getItem("totalQuestions"));
+
+    // prevent loading the quiz page without valid game settings
+    if (!game.mode || !game.totalQuestions) {
+        window.location.href = "index.html";
+    }
 }
 
 
@@ -263,7 +263,7 @@ function checkAnswer(event) {
         updateScore();
     }
 
-    setTimeout(advanceGame, 2000); // delay advancing to the next question so the player can see the feedback
+    setTimeout(advanceGame, 1500); // delay advancing to the next question so the player can see the feedback
 }
 
 
@@ -323,17 +323,51 @@ function advanceGame() {
             displayFlagQuestion();
         }
     } else {
-        displayResult();
+        endGame();
     }
 }
 
 
 /**
- * reads game.score and
- * game.totalQuestions
- * displays final score and
- * message
+ * ends the game when all questions have been answered
+ * stores the final score and total number of questions in localStorage
+ * redirects the player to the results page
  */
+function endGame() {
+
+    localStorage.setItem("finalScore", game.score);
+    localStorage.setItem("finalTotalQuestions", game.totalQuestions);
+
+    window.location.href = "results.html";
+
+}
+
+
+const resultText = document.getElementById("score");
+const resultMessage = document.getElementById("message");
+
+/**
+ * runs only on the results page
+ * retrieves the stored score from localStorage
+ * displays the final score and a message to the player
+ */
+    if (resultText) {
+        displayResult();
+}
+
 function displayResult() {
+
+    const finalScore = Number(localStorage.getItem("finalScore"));
+    const totalQuestions = Number(localStorage.getItem("finalTotalQuestions"));
+
+    resultText.innerText = `You scored ${finalScore} out of ${totalQuestions}!`;
+
+    if (finalScore === totalQuestions) {
+        resultMessage.innerText = "Perfect score! Amazing job!";
+    } else if (finalScore >= totalQuestions / 2) {
+        resultMessage.innerText = "Great job!";
+    } else {
+        resultMessage.innerText = "Nice try! Play again and improve your score.";
+    }
 
 }
