@@ -301,14 +301,30 @@ function updateScore() {
 
 
 /**
- * removes highlight classes from buttons
- * sets game.currentQuestion += 1
- * checks is game.currentQuestion < game.totalQuestions?
- * yes-> show next question, call display*Question
- * no -> end game, call displayResult
+ * progresses the game after each question
+ * resets button styles and re-enables the answer buttons
+ * increments the question counter
+ * loads the next question or ends the game when all questions are answered
  */
 function advanceGame() {
 
+    // reset button state for the next question
+    answerButtons.forEach(button => {
+        button.classList.remove("correct", "wrong");
+        button.disabled = false;
+    });
+
+    game.currentQuestion += 1;
+
+    if (game.currentQuestion <= game.totalQuestions) {
+        if (game.mode === "capital") {
+            displayCapitalQuestion();
+        } else if (game.mode === "flag") {
+            displayFlagQuestion();
+        }
+    } else {
+        displayResult();
+    }
 }
 
 
