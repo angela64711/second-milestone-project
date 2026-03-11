@@ -48,13 +48,29 @@ function readModal() {
 
 }
 
+/**
+ * retrieves the quiz settings stored in localStorage on the start page
+ * and applies them to the game object when the quiz page loads
+ */
 function loadGameSettings() {
     game.mode = localStorage.getItem("gameMode");
     game.totalQuestions = Number(localStorage.getItem("totalQuestions"));
 }
 
+
+/**
+ * start the game only if the quiz page elements exist
+ * prevents the game logic from running on other pages like index.html
+ */
+
 if (questionCounter) {
+    
     loadGameSettings();
+    
+    answerButtons.forEach(button => {
+        button.addEventListener("click", checkAnswer);
+    });
+
     startGame();
 }
 
@@ -79,8 +95,6 @@ function startGame() {
     } else if (game.mode === "flag") {
         displayFlagQuestion();
     }
-
-    console.log("Game initialized:", game);
 
 }
 
@@ -226,22 +240,47 @@ function getWrongCountryNames(correctCountry) {
 
 
 /**
- * compares clicked answer with game.correctAnswer
- * calls lightsOn() (visual feedback)
- * if correct calls updateScore()
- * waits 3 seconds and then
- * calls advanceGame()
+ * triggered when the user clicks an answer button
+ * compares the selected answer with the correct answer stored in the game object
+ * calls the visual feedback function to highlight the answers
+ * updates the score if the answer is correct
+ * waits briefly before advancing to the next question
  */
-function checkAnswer() {
+function checkAnswer(event) {
 
+    const clickedButton = event.target; //refers to the element that was clicked
+    const selectedAnswer = clickedButton.innerText;
+    const isCorrect = selectedAnswer === game.correctAnswer; // true if the clicked answer matches the correct answer stored in the game object
+
+    lightsOn(clickedButton);
+
+    if (isCorrect) {
+        updateScore();
+    }
+
+    setTimeout(advanceGame, 2000); // delay advancing to the next question so the player can see the feedback
 }
 
 
 /**
- * turn correct answer green
- * if user is wrong, turn user answer red
+ * displays visual feedback after an answer is selected
+ * highlights the correct answer in green
+ * if the player selected the wrong answer, highlights the clicked button in red
  */
-function lightsOn() {
+function lightsOn(clickedButton) {
+
+    answerButtons.forEach(button => {
+
+        if (button.innerText === game.correctAnswer) {
+            button.classList.add("correct");
+        }
+
+    });
+
+    if (clickedButton.innerText !== game.correctAnswer) {
+        clickedButton.classList.add("wrong");
+    }
+
 
 }
 
