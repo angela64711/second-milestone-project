@@ -254,6 +254,11 @@ function checkAnswer(event) {
 
     lightsOn(clickedButton);
 
+    // disable all answer buttons after the first selection to prevent multiple answers per question
+    answerButtons.forEach(button => {
+    button.disabled = true;
+    });
+
     if (isCorrect) {
         updateScore();
     }
@@ -281,14 +286,16 @@ function lightsOn(clickedButton) {
         clickedButton.classList.add("wrong");
     }
 
-
 }
 
 
 /**
- * increments game.score (if correct)
- * */
+ * increases the player's score by one when a correct answer is selected
+ * updates the score stored in the game state
+ */
 function updateScore() {
+
+    game.score += 1;
 
 }
 
