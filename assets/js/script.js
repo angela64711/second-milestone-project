@@ -13,6 +13,7 @@ const questionCounter = document.getElementById("question-counter");
 const questionText = document.getElementById("question");
 const flagImg = document.getElementById("flag-img");
 const answerButtons = document.querySelectorAll(".answer-btn");
+const gameModeTitle = document.getElementById("game-mode");
 
 
 /**
@@ -54,7 +55,7 @@ function loadGameSettings() {
     // prevent loading the quiz page without valid game settings
     if (!game.mode || !game.totalQuestions) {
         window.location.href = "index.html";
-    }
+    }a
 }
 
 
@@ -88,6 +89,15 @@ function startGame() {
     game.correctAnswer = "";
     game.options = [];
     game.usedCountries = [];
+
+    // Update the quiz title depending on the selected mode
+    if (game.mode === "capital") {
+        gameModeTitle.innerText = "Guess the Capital";
+        displayCapitalQuestion();
+    } else if (game.mode === "flag") {
+        gameModeTitle.innerText = "Guess the Country from the Flag";
+        displayFlagQuestion();
+    }
 
     // Display first question based on game mode
     if (game.mode === "capital") {
