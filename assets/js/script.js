@@ -273,7 +273,7 @@ function checkAnswer(event) {
         updateScore();
     }
 
-    setTimeout(advanceGame, 1500); // delay advancing to the next question so the player can see the feedback
+    setTimeout(advanceGame, 1300); // delay advancing to the next question so the player can see the feedback
 }
 
 
