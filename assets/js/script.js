@@ -55,7 +55,7 @@ function loadGameSettings() {
     // prevent loading the quiz page without valid game settings
     if (!game.mode || !game.totalQuestions) {
         window.location.href = "index.html";
-    }a
+    }
 }
 
 
