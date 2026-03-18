@@ -10,24 +10,39 @@
 }
 
 body {
-  background-color: aliceblue;
+  background-color: #fdfaf6;
   margin: 0;
   font-family: var(--primary-font);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("/assets/images/pattern.webp");
+  background-repeat: repeat;
+  background-size: 400px;
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: -1;
 }
 
 .home-panel {
   max-width: 700px;
   min-height: 100vh;
   margin: 0 auto;
-  padding: 2.5rem 1.5rem 3rem;
-  background-color: white;
+  padding: 1.25rem 1.5rem 1.75rem;
+  background-color: #ffffff;
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.10),
+    0 10px 25px rgba(0, 0, 0, 0.06);
 }
 
 #intro h1 {
   font-family: var(--secondary-font);
   color: var(--primary-color);
   text-shadow: 0 3px 8px rgba(0,0,0,0.12);
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 500;
@@ -45,7 +60,7 @@ body {
 
 #welcome-tagline {
   margin: 0;
-  padding: 1.5rem 0 1.5rem 1.5rem;
+  padding: 1rem 0 1rem 2rem;
   font-family: var(--secondary-font);
   color: var(--primary-color);
   font-size: clamp(1.6rem, 3vw, 2.2rem);
@@ -58,7 +73,7 @@ body {
     0 2px 6px rgba(255, 255, 255, 0.7),
     0 0 2px rgba(255, 255, 255, 0.9);
 
-  min-height: 380px;
+  min-height: 350px;
   display: flex;
   align-items: center;
 
@@ -78,6 +93,7 @@ body {
   letter-spacing: 0.03rem;
   background-color: var(--primary-color);
   padding: 1rem 2rem;
+  margin-top: 1rem;
   border-radius: 999px; /*number high enough to keep the button fully rounded even if size changes*/
   border: none;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10),
