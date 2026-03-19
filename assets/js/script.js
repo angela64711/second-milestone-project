@@ -58,7 +58,6 @@ function loadGameSettings() {
     }
 }
 
-
 /**
  * start the game only if the quiz page elements exist
  * prevents the game logic from running on other pages like index.html
@@ -75,7 +74,6 @@ if (questionCounter) {
     startGame();
 }
 
-
 /**
  * initializes and resets the game state
  * calls the appropriate display*Question()
@@ -90,7 +88,7 @@ function startGame() {
     game.options = [];
     game.usedCountries = [];
 
-    // Update the quiz title depending on the selected mode
+    // Update the quiz title and display first question depending on the selected mode
     if (game.mode === "capital") {
         gameModeTitle.innerText = "Guess the Capital";
         displayCapitalQuestion();
@@ -98,14 +96,6 @@ function startGame() {
         gameModeTitle.innerText = "Guess the Country from the Flag";
         displayFlagQuestion();
     }
-
-    // Display first question based on game mode
-    if (game.mode === "capital") {
-        displayCapitalQuestion();
-    } else if (game.mode === "flag") {
-        displayFlagQuestion();
-    }
-
 }
 
 /**
@@ -298,7 +288,6 @@ function lightsOn(clickedButton) {
 
 }
 
-
 /**
  * increases the player's score by one when a correct answer is selected
  * updates the score stored in the game state
@@ -308,7 +297,6 @@ function updateScore() {
     game.score += 1;
 
 }
-
 
 /**
  * progresses the game after each question
@@ -322,6 +310,7 @@ function advanceGame() {
     answerButtons.forEach(button => {
         button.classList.remove("correct", "wrong");
         button.disabled = false;
+        button.blur(); // removes focus from the button (DOM method) to prevent mobile browsers from keeping it in a "hover/active" visual state after tap
     });
 
     game.currentQuestion += 1;
