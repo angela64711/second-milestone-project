@@ -191,6 +191,14 @@ body::before {
   transform: scale(1.03);
 }
 
+/* prevent tapped buttons on mobile from keeping a focus/active visual state */
+.answer-btn:focus,
+.answer-btn:active {
+  outline: none;
+  background-color: transparent;
+  color: inherit;
+}
+
 /* highlight the correct answer */
 .answer-btn.correct,
 .answer-btn.correct:disabled {
