@@ -370,7 +370,7 @@ function displayResult() {
     const finalScore = Number(localStorage.getItem("finalScore"));
     const totalQuestions = Number(localStorage.getItem("finalTotalQuestions"));
 
-    resultText.innerText = `You scored ${finalScore} out of ${totalQuestions}!`;
+    resultText.innerText = `You scored ${finalScore} / ${totalQuestions}!`;
 
     if (finalScore === totalQuestions) {
         resultMessage.innerText = "Perfect score! Amazing job!";
