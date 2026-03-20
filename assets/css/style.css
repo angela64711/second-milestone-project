@@ -188,33 +188,10 @@ body::before {
   box-shadow: 0 6px 12px rgba(0,0,0,0.05);
 }
 
-/* prevent tapped buttons on mobile from keeping a focus/active visual state */
-
-.btn:focus,
-.btn:focus-visible,
-.btn:active,
-.btn.active,
-.answer-btn:focus,
-.answer-btn:focus-visible,
-.answer-btn:active,
-.answer-btn.active {
-  outline: none !important;
-  box-shadow: none !important;
-  background-image: none !important;
-}
-
-.btn {
-  -webkit-tap-highlight-color: transparent;
-}
-
-
-@media (hover: hover) and (pointer: fine) {
 .answer-btn:hover {
   background-color: var(--primary-color);
   border-color: var(--primary-color);
-  color: white;
-  transform: scale(1.03);
-}
+  color: #ffffff;
 }
 
 /* highlight the correct answer */
@@ -224,6 +201,7 @@ body::before {
     border-color: #43a047;
     color: white;
 }
+
 /* highlight the wrong answer */
 .answer-btn.wrong,
 .answer-btn.wrong:disabled {
@@ -294,6 +272,7 @@ body::before {
 #replay-btn:hover,
 #replay-btn:focus {
   background-color: #2c4fd6;
+  color: #ffffff;
   transform: scale(1.05);
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14),
   0 6px 12px rgba(0, 0, 0, 0.08),
@@ -412,7 +391,7 @@ body::before {
   margin-bottom: 2rem;
 }
 
-.home-panel a#start-btn {
+.home-panel #start-btn {
   margin-top: 0;
 }
 

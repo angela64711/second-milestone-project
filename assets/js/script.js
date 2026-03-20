@@ -307,10 +307,10 @@ function updateScore() {
 function advanceGame() {
 
     // reset button state for the next question
-    answerButtons.forEach(button => {
+     answerButtons.forEach(button => {
         button.classList.remove("correct", "wrong");
         button.disabled = false;
-        button.blur(); // removes focus from the button (DOM method) to prevent mobile browsers from keeping it in a "hover/active" visual state after tap
+        
     });
 
     game.currentQuestion += 1;
@@ -324,6 +324,7 @@ function advanceGame() {
     } else {
         endGame();
     }
+
 }
 
 
