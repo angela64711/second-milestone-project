@@ -188,33 +188,17 @@ body::before {
   box-shadow: 0 6px 12px rgba(0,0,0,0.05);
 }
 
+@media (hover: hover) and (pointer: fine) {
 .answer-btn:hover {
   background-color: var(--primary-color);
   border-color: var(--primary-color);
   color: white;
   transform: scale(1.03);
 }
+}
 
 /* prevent tapped buttons on mobile from keeping a focus/active visual state */
-button.answer-btn,
-button.answer-btn:hover,
-button.answer-btn:focus,
-button.answer-btn:focus-visible,
-button.answer-btn:active,
-button.answer-btn.active,
-button.answer-btn:disabled {
-  outline: none;
-  box-shadow: none;
-  -webkit-tap-highlight-color: transparent;
-}
 
-button.answer-btn:focus,
-button.answer-btn:focus-visible,
-button.answer-btn:active,
-button.answer-btn.active {
-  background-image: none;
-  box-shadow: none;
-}
 
 /* highlight the correct answer */
 .answer-btn.correct,
@@ -229,11 +213,6 @@ button.answer-btn.active {
     background-color: #d64545;
     border-color: #d64545;
     color: white;
-}
-
-.answer-btn:disabled {
-    cursor: not-allowed;
-    opacity: 1;
 }
 
 
