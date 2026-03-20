@@ -196,11 +196,24 @@ body::before {
 }
 
 /* prevent tapped buttons on mobile from keeping a focus/active visual state */
-.answer-btn:focus,
-.answer-btn:active {
+button.answer-btn,
+button.answer-btn:hover,
+button.answer-btn:focus,
+button.answer-btn:focus-visible,
+button.answer-btn:active,
+button.answer-btn.active,
+button.answer-btn:disabled {
   outline: none;
-  background-color: transparent;
-  color: inherit;
+  box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button.answer-btn:focus,
+button.answer-btn:focus-visible,
+button.answer-btn:active,
+button.answer-btn.active {
+  background-image: none;
+  box-shadow: none;
 }
 
 /* highlight the correct answer */
