@@ -408,4 +408,27 @@ body::before {
 }
 
 
+/*-------------------------------------Media Queries */
 
+/* welcome page mobile polish */
+@media screen and (max-width: 576px) {
+
+  .home-panel {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+  #intro h1 {
+    font-size: clamp(2.3rem, 8vw, 3rem);
+    line-height: 1.1;
+    margin-bottom: 0.4rem;
+  }
+
+  .title-stars {
+    margin-bottom: 0.75rem;
+  }
+
+  #welcome-tagline {
+    margin-bottom: 1rem !important;
+  }
+}
