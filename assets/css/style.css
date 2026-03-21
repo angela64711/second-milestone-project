@@ -399,6 +399,22 @@ body::before {
 
 #redirect-btn {
   margin-top: 0;
+  font-family: var(--secondary-font);
+  font-size: 1.5rem;
+  font-weight: 550;
+  letter-spacing: 0.01em;
+  border-radius: 999px;
+  padding: 0.6rem 1rem;
+  opacity: 0.8;
+  background-color: var(--accent-color);
+  border: 2px solid var(--accent-color);
+  color: var(--primary-color);
+}
+
+#redirect-btn:hover {
+  background-color: #f1d36b;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
 }
 
 
