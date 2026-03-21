@@ -9,10 +9,11 @@
   --primary-color: #1e3a8a;
   --text-color: #2f3441;
   --accent-color: #f4c542;
+  --background-color: #fdfaf6;
 }
 
 body {
-  background-color: #fdfaf6;
+  background-color: var(--background-color);
   margin: 0;
   font-family: var(--primary-font);
 }
