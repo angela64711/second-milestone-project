@@ -34,7 +34,7 @@ body::before {
   max-width: 700px;
   min-height: 100vh;
   margin: 0 auto;
-  padding: 1.25rem 1.5rem 1.75rem;
+  padding: 1rem 1rem 1.25rem;
   background-color: #ffffff;
   box-shadow:
     0 25px 60px rgba(0, 0, 0, 0.10),
@@ -45,9 +45,9 @@ body::before {
   font-family: var(--secondary-font);
   color: var(--primary-color);
   text-shadow: 0 3px 8px rgba(0,0,0,0.12);
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   margin-bottom: 0;
-  font-size: clamp(2.6rem, 5vw, 3rem);
+  font-size: clamp(2.5rem, 8vw, 3rem);
   font-weight: 500;
   line-height: 1.1;
   letter-spacing: 0.02em;
@@ -55,10 +55,10 @@ body::before {
 
 .title-stars {
   color: var(--accent-color);
-  font-size: 2.2rem;
-  letter-spacing: 0.5rem;
-  margin-top: 0;
-
+  font-size: 1.8rem;
+  letter-spacing: 0.4rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   text-shadow:
     0 2px 6px rgba(0, 0, 0, 0.15),
     0 0 8px rgba(244, 197, 66, 0.35);
@@ -74,27 +74,24 @@ body::before {
 
 #welcome-tagline {
   margin: 0;
-  padding: 1rem 0 1rem 2rem;
+  padding: 0.5rem 0 0.5rem 1rem;
   font-family: var(--secondary-font);
   color: var(--primary-color);
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
   font-weight: 500;
-  line-height: 1.3;
+  line-height: 1.2;
   text-align: left;
   letter-spacing: 0.02em;
-
   text-shadow:
     0 2px 6px rgba(255, 255, 255, 0.7),
     0 0 2px rgba(255, 255, 255, 0.9);
-
-  min-height: 350px;
+  min-height: 240px;
   display: flex;
   align-items: center;
-
   background-image: url(../images/eu-map.webp);
   background-repeat: no-repeat;
   background-position: right bottom;
-  background-size: auto 120%;
+  background-size: auto 100%;
 }
 
 #start-btn, #replay-btn {
@@ -102,12 +99,12 @@ body::before {
 }
 
 #start-btn {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 600;
   letter-spacing: 0.03rem;
   background-color: var(--primary-color);
-  padding: 1rem 2rem;
-  margin-top: 1rem;
+  padding: 1rem 1.8rem;
+  margin-top: 2rem;
   border-radius: 999px; /*number high enough to keep the button fully rounded even if size changes*/
   border: none;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10),
@@ -392,31 +389,24 @@ body::before {
   margin-bottom: 2rem;
 }
 
-.home-panel #start-btn {
+#redirect-btn {
   margin-top: 0;
 }
 
 
 /*-------------------------------------Media Queries */
 
-/* welcome page mobile polish */
-@media screen and (max-width: 576px) {
-
-  .home-panel {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
-
-  #intro h1 {
-    line-height: 1.1;
-    margin-bottom: 0.5rem;
-  }
-
-  .title-stars {
-    margin-bottom: 1rem;
-  }
-
-  #welcome-tagline {
-    margin-bottom: 1rem !important;
+@media screen and (min-width: 768px) {
+  #start-btn {
+    margin-top: 2.5rem;
   }
 }
+
+
+
+@media screen and (max-width: 576px) {
+
+ 
+}
+
+
