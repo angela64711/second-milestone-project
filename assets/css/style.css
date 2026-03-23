@@ -32,7 +32,9 @@ body::before {
 
 .home-panel {
   max-width: 600px;
-  min-height: 100vh;
+  min-height: 100vh; /*fallback*/
+  min-height: 100dvh;  /* better on mobile */
+  box-sizing: border-box;
   margin: 0 auto;
   padding: 1rem 0 1.25rem;
   background-color: #ffffff;
@@ -48,7 +50,7 @@ body::before {
   color: var(--primary-color);
   text-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
   margin-top: 1rem;
-  margin-bottom: 0;
+  margin-bottom: 1rem;
   font-size: clamp(2.6rem, 9vw, 4rem);
   font-weight: 600;
   line-height: 1.1;
@@ -59,8 +61,8 @@ body::before {
   color: var(--accent-color);
   font-size: 1.8rem;
   letter-spacing: 0.4rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   text-shadow:
     0 2px 6px rgba(0, 0, 0, 0.15),
     0 0 8px rgba(244, 197, 66, 0.35);
@@ -477,7 +479,7 @@ body::before {
 
   #welcome-tagline {
     min-height: 500px;
-    margin-top: 4rem;
+    margin-top: 2rem;
     background-size: auto 110%;
   }
 
@@ -486,7 +488,7 @@ body::before {
 }
 
   #start-btn {
-    margin-top: 5rem;
+    margin-top: 3rem;
   }
 
   .title-stars {

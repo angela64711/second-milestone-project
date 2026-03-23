@@ -100,57 +100,27 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 
 ## Defensive Programming
 
-⚠️ INSTRUCTIONS ⚠️
-
-Defensive programming (defensive design) is extremely important! When building projects that accept user inputs or forms, you should always test the level of security for each form field. Examples of this could include (but not limited to):
-
-All Projects:
-
-- Users cannot submit an empty form (add the `required` attribute)
-- Users must enter valid field types (ensure the correct input `type=""` is used)
-- Users cannot brute-force a URL to navigate to a restricted pages
-
-Testing should be replicable (can someone else replicate the same outcome?). Ideally, tests cases should focus on each individual section of every page on the website. Each test case should be specific, objective, and step-wise replicable.
-
-Instead of adding a general overview saying that everything works fine, consider documenting tests on each element of the page (eg. button clicks, input box validation, navigation links, etc.) by testing them in their "happy flow", their "bad/exception flow", mentioning the expected and observed results, and drawing a parallel between them where applicable.
-
-Consider using the following format for manual test cases:
-
-- Expected Outcome / Test Performed / Result Received / Fixes Implemented
-
-- **Expected**: "Feature is expected to do X when the user does Y."
-- **Testing**: "Tested the feature by doing Y."
-- (either) **Result**: "The feature behaved as expected, and it did Y."
-- (or) **Result**: "The feature did not respond to A, B, or C."
-- **Fix**: "I did Z to the code because something was missing."
-
-Use the table below as a basic start, and expand on it using the logic above.
-
-⚠️ --- END --- ⚠️
-
 Defensive programming was manually tested with the below user acceptance testing:
 
 | Page/Feature | Expectation | Test | Result | Screenshot |
 | --- | --- | --- | --- | --- |
-| Calculator UI | Feature is expected to allow the user to input two numbers and select an operator (`+`, `-`, `*`, `/`). | Entered two numbers and selected each operator to perform calculations. | Calculations for all operators worked as expected. | ![screenshot](documentation/defensive/input-output.png) |
-| | Feature is expected to show an error message if inputs are empty (`NaN`). | Tried submitting calculations with empty input fields. | Error message displayed as expected. | ![screenshot](documentation/defensive/empty-inputs.png) |
-| | Feature is expected to display buttons that are clear, large, and easy to select on all devices. | Verified button sizes and usability across multiple devices (mobile, tablet, desktop). | Buttons were accessible and easy to use on all tested devices. | ![screenshot](documentation/defensive/responsive.png) |
-| | Feature is expected to use high-contrast colors and accessible fonts. | Checked contrast ratios using accessibility tools (e.g., Lighthouse, Wave). | Colors and fonts met accessibility standards. | ![screenshot](documentation/defensive/accessibility.png) |
-| | Feature is expected to have clear labels and instructions for user guidance. | Reviewed labels and instructions for clarity and ease of use. | Labels and instructions were clear and intuitive. | ![screenshot](documentation/defensive/labels-instructions.png) |
-| Instant Calculation | Feature is expected to calculate and display results instantly after selecting an operator. | Selected operators after entering two numbers. | Results were displayed instantly. | ![screenshot](documentation/defensive/calc-speed.png) |
-| Error Handling | Feature is expected to display correct results even if an equation was input incorrectly. | Entered various incorrect equations and verified the results. | Correct results were displayed for all tested cases. | ![screenshot](documentation/defensive/error-handling.png) |
-| Score Tracker | Feature is expected to track the number of correct and incorrect equations. | Performed multiple calculations (correct and incorrect) and checked the score tracker. | Score tracker updated correctly for all tested scenarios. | ![screenshot](documentation/defensive/score-tracker.png) |
+| Welcome page / game setup | The quiz should only start with valid game settings. | Open the modal, leave the default selections unchanged, and start the game. Repeat with each valid mode and question count. | Pass – the game starts correctly with valid stored settings, preventing an undefined start state. | ![screenshot](documentation/defensive/) |
+| Quiz page / stored settings validation | The quiz page should only load when valid mode and question count values exist in storage. | Start a game normally and verify that the correct mode and question count are loaded on the quiz page. | Pass – quiz settings are loaded correctly and only valid values are accepted. | ![screenshot](documentation/defensive/) |
+| Quiz page / one answer per question | Each question should only be processed once. | Click one answer, then try clicking other answers again during the same question. | Pass – only the first click is accepted and no additional answer is processed | ![screenshot](documentation/defensive/) |
+| Quiz page / score protection | The score should never increase more than once for the same question. | Select an answer and attempt repeated or rapid extra clicks on answer buttons. | Pass – score is only updated once because the question is locked after the first answer. | ![screenshot](documentation/defensive/) |
+| Quiz page / question state reset | After moving to the next question, the answer lock should reset so the new question can be answered normally. | Answer one question, wait for the next question to load, then answer again. | Pass – each new question accepts one answer normally, showing that the answer state resets correctly between rounds. | ![screenshot](documentation/defensive/) |
+| Quiz page / browser Back button during quiz | Using the browser Back button during an active quiz should return the user to a safe state. | Start a quiz, answer one or more questions, then press the browser Back button. | Pass – the user is returned to the homepage, preventing continuation in an unsafe or broken quiz state. | ![screenshot](documentation/defensive/calc-speed.png) |
+| Results page / browser Back button after completion | Using browser history after finishing the quiz should not restore an old answered question or allow score manipulation. | Complete a quiz, reach the results page, then press the browser Back button. | Pass – the app starts a fresh quiz instead of allowing access to a previously answered question, so completed answers and scores cannot be changed. | ![screenshot](documentation/defensive/) |
+| Quiz page / refresh during active game | Refreshing the quiz page should not preserve a broken or stale question state. | Start a quiz, answer a few questions, then refresh the page. | Pass – the quiz reloads safely as a new game, preventing reuse of stale progress. | ![screenshot](documentation/defensive/) |
+| Results page / refresh after completion | Refreshing the results page should preserve valid results without breaking the page. | Complete a quiz, reach the results page, then refresh the browser. | Pass – the results remain valid and display the stored score correctly. | ![screenshot](documentation/defensive/) |
+| Results page / stored result validation | The results page should only display sensible score data. | Finish a game and verify that the displayed score matches the total number of questions and remains within a valid range. | Pass – the results page displays valid stored results only, helping prevent broken or manipulated result states. | ![screenshot](documentation/defensive/) | 
+| Deployed site / cross-device testing | Defensive safeguards should work consistently outside the local development environment. | Test the deployed site on another device or browser and repeat Back button and refresh checks. | Test the deployed site on another device or browser and repeat Back button and refresh checks. | ![screenshot](documentation/defensive/) |
+| Results page / data validation | Results should only display valid score data. | Attempt to load results page with invalid or missing stored values. | Pass – invalid data triggers redirect, preventing broken or manipulated results.| ![screenshot](documentation/defensive/) |
+| Quiz logic / country selection | A country should not appear more than once per game. | Play through a full quiz and observe country repetition. | Pass – previously used countries are tracked and excluded, preventing duplicates. | ![screenshot](documentation/defensive/) |
+| Quiz logic / answer generation | Each question should display unique answer options. | Check multiple questions for repeated answer choices. | Pass – wrong answers are filtered to ensure unique options. | ![screenshot](documentation/defensive/) |
 | 404 Error Page | Feature is expected to display a 404 error page for non-existent pages. | Navigated to an invalid URL (e.g., `/test`) to test error handling. | A custom 404 error page was displayed as expected. | ![screenshot](documentation/defensive/404.png) |
 
 ## User Story Testing
-
-⚠️ INSTRUCTIONS ⚠️
-
-Testing User Stories is actually quite simple, once you've already got the stories defined on your README.
-
-Most of your project's **Features** should already align with the **User Stories**, so this should be as simple as creating a table with the User Story, matching with the re-used screenshot from the respective Feature.
-
-⚠️ --- END --- ⚠️
 
 | Target | Expectation | Outcome | Screenshot |
 | --- | --- | --- |
