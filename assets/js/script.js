@@ -1,3 +1,5 @@
+`/* jshint esversion: 11 */`
+
 const game = {
     mode: "", //"capital" or "flag"
     totalQuestions: 0, //number chosen in the modal
@@ -64,9 +66,9 @@ function loadGameSettings() {
  */
 
 if (questionCounter) {
-    
+
     loadGameSettings();
-    
+
     answerButtons.forEach(button => {
         button.addEventListener("click", checkAnswer);
     });
@@ -256,7 +258,7 @@ function checkAnswer(event) {
 
     // disable all answer buttons after the first selection to prevent multiple answers per question
     answerButtons.forEach(button => {
-    button.disabled = true;
+        button.disabled = true;
     });
 
     if (isCorrect) {
@@ -307,10 +309,10 @@ function updateScore() {
 function advanceGame() {
 
     // reset button state for the next question
-     answerButtons.forEach(button => {
+    answerButtons.forEach(button => {
         button.classList.remove("correct", "wrong");
         button.disabled = false;
-        
+
     });
 
     game.currentQuestion += 1;
@@ -326,7 +328,6 @@ function advanceGame() {
     }
 
 }
-
 
 /**
  * ends the game when all questions have been answered
@@ -351,8 +352,8 @@ const resultMessage = document.getElementById("message");
  * retrieves the stored score from localStorage
  * displays the final score and a message to the player
  */
-    if (resultText) {
-        displayResult();
+if (resultText) {
+    displayResult();
 }
 
 function displayResult() {

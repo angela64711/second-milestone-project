@@ -1,3 +1,5 @@
+`/* jshint esversion: 11 */`
+
 /* Country data */
 
 const countries = [

@@ -196,11 +196,11 @@ body::before {
 
 
 @media (hover: hover) and (pointer: fine) {
-.answer-btn:hover {
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-  color: #ffffff;
-}
+  .answer-btn:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #ffffff;
+  }
 }
 
 /* highlight the correct answer */
