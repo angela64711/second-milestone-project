@@ -9,7 +9,8 @@ const game = {
     currentCountry: null, //country object selected in the current round
     correctAnswer: "", //correct answer for this round
     options: [], //the 4 answer choices for this round
-    usedCountries: [] //countries already used in this round(prevents duplicates)
+    usedCountries: [], //countries already used in this round(prevents duplicates)
+    isAnswered: false // tracks if the current question has already been answered to prevent duplicate processing
 };
 
 const questionCounter = document.getElementById("question-counter");
@@ -52,11 +53,15 @@ function readModal() {
  * and applies them to the game object when the quiz page loads
  */
 function loadGameSettings() {
+
     game.mode = localStorage.getItem("gameMode");
     game.totalQuestions = Number(localStorage.getItem("totalQuestions"));
 
+    const validMode = game.mode === "capital" || game.mode === "flag";
+    const validQuestionCount = [5, 10, 20].includes(game.totalQuestions);
+
     // prevent loading the quiz page without valid game settings
-    if (!game.mode || !game.totalQuestions) {
+    if (!validMode || !validQuestionCount) {
         window.location.href = "index.html";
     }
 }
@@ -90,6 +95,9 @@ function startGame() {
     game.correctAnswer = "";
     game.options = [];
     game.usedCountries = [];
+    game.isAnswered = false; // reset answer state at the start of a new game
+   
+    localStorage.removeItem("quizCompleted");
 
     // Update the quiz title and display first question depending on the selected mode
     if (game.mode === "capital") {
@@ -251,6 +259,12 @@ function getWrongCountryNames(correctCountry) {
  */
 function checkAnswer(event) {
 
+    if (game.isAnswered) {
+        return; // stop function if this question was already answered (prevents duplicate scoring or repeated clicks)
+    }
+
+    game.isAnswered = true; // lock the question after the first answer so it cannot be processed again
+
     const clickedButton = event.target; //refers to the element that was clicked
     const selectedAnswer = clickedButton.innerText;
     const isCorrect = selectedAnswer === game.correctAnswer; // true if the clicked answer matches the correct answer stored in the game object
@@ -266,7 +280,7 @@ function checkAnswer(event) {
         updateScore();
     }
 
-    setTimeout(advanceGame, 1300); // delay advancing to the next question so the player can see the feedback
+    setTimeout(advanceGame, 1200); // delay advancing to the next question so the player can see the feedback
 }
 
 
@@ -316,6 +330,7 @@ function advanceGame() {
 
     });
 
+    game.isAnswered = false; // unlock for the next question so a new answer can be accepted
     game.currentQuestion += 1;
 
     if (game.currentQuestion <= game.totalQuestions) {
@@ -337,6 +352,7 @@ function advanceGame() {
  */
 function endGame() {
 
+    localStorage.setItem("quizCompleted", "true"); // mark quiz as completed to prevent reuse via browser back button or cached pages
     localStorage.setItem("finalScore", game.score);
     localStorage.setItem("finalTotalQuestions", game.totalQuestions);
 
@@ -362,6 +378,10 @@ function displayResult() {
     const finalScore = Number(localStorage.getItem("finalScore"));
     const totalQuestions = Number(localStorage.getItem("finalTotalQuestions"));
 
+    if (![5, 10, 20].includes(totalQuestions) || finalScore < 0 || finalScore > totalQuestions) {
+        window.location.href = "index.html"; // redirect if result data is invalid or manipulated (defensive check)
+    }
+
     resultText.innerText = `You scored ${finalScore} / ${totalQuestions}!`;
 
     if (finalScore === totalQuestions) {
@@ -373,3 +393,17 @@ function displayResult() {
     }
 
 }
+
+window.addEventListener("pageshow", function (event) {
+    const isQuizPage = window.location.pathname.includes("quiz.html"); // check if current page is the quiz page
+    const isResultsPage = window.location.pathname.includes("results.html"); // check if current page is the results page
+    const quizCompleted = localStorage.getItem("quizCompleted"); // retrieve completion state of the quiz
+
+    if (event.persisted && isQuizPage && quizCompleted === "true") {
+        window.location.href = "index.html"; // redirect if a completed quiz page is restored from browser cache (bfcache)
+    }
+
+    if (event.persisted && isResultsPage && !localStorage.getItem("finalScore")) {
+        window.location.href = "index.html"; // prevent accessing results page without valid score data when restored from cache
+    }
+});
