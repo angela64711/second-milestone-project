@@ -1,4 +1,5 @@
-`/* jshint esversion: 11 */`
+/* jshint esversion: 11 */
+/* global countries */
 
 const game = {
     mode: "", //"capital" or "flag"

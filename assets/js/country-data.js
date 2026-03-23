@@ -1,142 +1,142 @@
-`/* jshint esversion: 11 */`
+/* jshint esversion: 11 */
+/* exported countries */
 
 /* Country data */
 
-const countries = [
-    {
+const countries = [{
         name: "Austria",
-        code: "at", 
+        code: "at",
         capital: "Vienna"
     },
-     {
+    {
         name: "Belgium",
-        code: "be", 
+        code: "be",
         capital: "Brussels"
     },
-     {
+    {
         name: "Bulgaria",
-        code: "bg", 
+        code: "bg",
         capital: "Sofia"
     },
-     {
+    {
         name: "Cyprus",
-        code: "cy", 
+        code: "cy",
         capital: "Nicosia"
     },
-     {
+    {
         name: "Czechia",
-        code: "cz", 
+        code: "cz",
         capital: "Prague"
     },
-     {
+    {
         name: "Germany",
-        code: "de", 
+        code: "de",
         capital: "Berlin"
     },
-     {
+    {
         name: "Denmark",
-        code: "dk", 
+        code: "dk",
         capital: "Copenhagen"
     },
-     {
+    {
         name: "Estonia",
-        code: "ee", 
+        code: "ee",
         capital: "Tallinn"
     },
-     {
+    {
         name: "Spain",
-        code: "es", 
+        code: "es",
         capital: "Madrid"
     },
-     {
+    {
         name: "Finland",
-        code: "fi", 
+        code: "fi",
         capital: "Helsinki"
     },
-     {
+    {
         name: "France",
-        code: "fr", 
+        code: "fr",
         capital: "Paris"
     },
-     {
+    {
         name: "Greece",
-        code: "gr", 
+        code: "gr",
         capital: "Athens"
     },
-     {
+    {
         name: "Croatia",
-        code: "hr", 
+        code: "hr",
         capital: "Zagreb"
     },
-     {
+    {
         name: "Hungary",
-        code: "hu", 
+        code: "hu",
         capital: "Budapest"
     },
-     {
+    {
         name: "Ireland",
-        code: "ie", 
+        code: "ie",
         capital: "Dublin"
     },
-     {
+    {
         name: "Italy",
-        code: "it", 
+        code: "it",
         capital: "Rome"
     },
-     {
+    {
         name: "Lithuania",
-        code: "lt", 
+        code: "lt",
         capital: "Vilnius"
     },
-     
-     {
+
+    {
         name: "Luxembourg",
-        code: "lu", 
+        code: "lu",
         capital: "Luxembourg"
     },
     {
         name: "Latvia",
-        code: "lv", 
+        code: "lv",
         capital: "Riga"
     },
-     {
+    {
         name: "Malta",
-        code: "mt", 
+        code: "mt",
         capital: "Valletta"
     },
     {
         name: "Netherlands",
-        code: "nl", 
+        code: "nl",
         capital: "Amsterdam"
     },
     {
         name: "Poland",
-        code: "pl", 
+        code: "pl",
         capital: "Warsaw"
     },
     {
         name: "Portugal",
-        code: "pt", 
+        code: "pt",
         capital: "Lisbon"
     },
     {
         name: "Romania",
-        code: "ro", 
+        code: "ro",
         capital: "Bucharest"
     },
     {
         name: "Sweden",
-        code: "se", 
+        code: "se",
         capital: "Stockholm"
     },
     {
         name: "Slovenia",
-        code: "si", 
+        code: "si",
         capital: "Ljubljana"
     },
     {
         name: "Slovakia",
-        code: "sk", 
+        code: "sk",
         capital: "Bratislava"
     },
-]
+];
