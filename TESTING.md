@@ -69,6 +69,21 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 | Results | ![screenshot](documentation/lighthouse/mobile-results.png) | ![screenshot](documentation/lighthouse/desktop-results.png) |
 | 404 | ![screenshot](documentation/lighthouse/mobile-404.png) | ![screenshot](documentation/lighthouse/desktop-404.png) |
 
+
+## Contrast Testing
+
+Color contrast was tested using the [WebAim Contrast Checker](https://webaim.org/resources/contrastchecker/).
+
+The following combinations were tested:
+- Body text (#2f3441) on background (#fdf8f6)
+- Primary color (#1e3a8a) on white
+- Button text and background combinations
+
+All tested combinations meet WCAG AA accessibility standards.
+
+![screenshot](documentation/colors/contrast-check.png)
+
+
 ## Defensive Programming
 
 Defensive programming was manually tested with the below user acceptance testing:
