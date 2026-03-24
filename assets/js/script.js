@@ -26,7 +26,7 @@ const gameModeTitle = document.getElementById("game-mode");
  * where this button is present, preventing errors on other pages
  */
 
-let beginGameBtn = document.getElementById("begin-game-btn");
+const beginGameBtn = document.getElementById("begin-game-btn");
 
 if (beginGameBtn) {
     beginGameBtn.addEventListener("click", readModal);
@@ -38,10 +38,15 @@ if (beginGameBtn) {
  */
 function readModal() {
 
-    let mode = document.querySelector('input[name="game-mode"]:checked').value;
-    let number = document.getElementById("question-count").value;
+    const selectedMode = document.querySelector('input[name="game-mode"]:checked');
+    const number = document.getElementById("question-count").value;
 
-    localStorage.setItem("gameMode", mode);
+    //ensure valid game settings before starting
+    if (!selectedMode || !["5", "10", "20"].includes(number)) {
+        return;
+    }
+
+    localStorage.setItem("gameMode", selectedMode.value);
     localStorage.setItem("totalQuestions", number);
 
     window.location.href = "quiz.html";
@@ -125,7 +130,7 @@ function displayCapitalQuestion() {
     game.currentCountry = selectedCountry;
     game.correctAnswer = selectedCountry.capital;
 
-    let options = [...wrongAnswers];
+    const options = [...wrongAnswers];
     const randomPosition = Math.floor(Math.random() * 4);
     options.splice(randomPosition, 0, selectedCountry.capital);
 
@@ -160,7 +165,7 @@ function displayFlagQuestion() {
     game.currentCountry = selectedCountry;
     game.correctAnswer = selectedCountry.name;
 
-    let options = [...wrongAnswers];
+    const options = [...wrongAnswers];
     const randomPosition = Math.floor(Math.random() * 4);
     options.splice(randomPosition, 0, selectedCountry.name);
 
@@ -263,9 +268,9 @@ function checkAnswer(event) {
         return; // stop function if this question was already answered (prevents duplicate scoring or repeated clicks)
     }
 
-    game.isAnswered = true; // lock the question after the first answer so it cannot be processed again
+    game.isAnswered = true; // prevent multiple answers for the same question
 
-    const clickedButton = event.target; //refers to the element that was clicked
+    const clickedButton = event.currentTarget; //refers to the element that was clicked
     const selectedAnswer = clickedButton.innerText;
     const isCorrect = selectedAnswer === game.correctAnswer; // true if the clicked answer matches the correct answer stored in the game object
 
