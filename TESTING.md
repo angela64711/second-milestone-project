@@ -12,10 +12,10 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 
 | Directory | File | URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- |
-|  | [404.html](https://github.com/angela64711/second-milestone-project/blob/main/404.html) | [HTML Validator](https://validator.w3.org/nu/?doc=https://angela64711.github.io/second-milestone-project/404.html) | ![screenshot](documentation/validation/html--404.png) | 
-|  | [index.html](https://github.com/angela64711/second-milestone-project/blob/main/index.html) | [HTML Validator](https://validator.w3.org/nu/?doc=https://angela64711.github.io/second-milestone-project/index.html) | ![screenshot](documentation/validation/html--index.png) | 
-|  | [quiz.html](https://github.com/angela64711/second-milestone-project/blob/main/quiz.html) | [HTML Validator](https://validator.w3.org/nu/?doc=https://angela64711.github.io/second-milestone-project/quiz.html) | ![screenshot](documentation/validation/html--quiz.png) | 
-|  | [results.html](https://github.com/angela64711/second-milestone-project/blob/main/results.html) | [HTML Validator](https://validator.w3.org/nu/?doc=https://angela64711.github.io/second-milestone-project/results.html) | ![screenshot](documentation/validation/html--results.png) | 
+| root | [404.html](https://github.com/angela64711/second-milestone-project/blob/main/404.html) | [HTML Validator](https://validator.w3.org/nu/?doc=https://angela64711.github.io/second-milestone-project/404.html&out=html) | ![screenshot](documentation/validation/html--404.png) | No errors found |
+| root | [index.html](https://github.com/angela64711/second-milestone-project/blob/main/index.html) | [HTML Validator](https://validator.w3.org/nu/?doc=https://angela64711.github.io/second-milestone-project/index.html&out=html) | ![screenshot](documentation/validation/html--index.png) | No errors found |
+| root | [quiz.html](https://github.com/angela64711/second-milestone-project/blob/main/quiz.html) | [HTML Validator](https://validator.w3.org/nu/?doc=https://angela64711.github.io/second-milestone-project/quiz.html&out=html) | ![screenshot](documentation/validation/html--quiz.png) | No errors found |
+| root | [results.html](https://github.com/angela64711/second-milestone-project/blob/main/results.html) | [HTML Validator](https://validator.w3.org/nu/?doc=https://angela64711.github.io/second-milestone-project/results.html&out=html) | ![screenshot](documentation/validation/html--results.png) | No errors found |
 
 
 ### CSS
@@ -24,37 +24,17 @@ I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-val
 
 | Directory | File | URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- |
-| assets | [style.css](https://github.com/angela64711/second-milestone-project/blob/main/assets/css/style.css) | [CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=https://angela64711.github.io/second-milestone-project) | ![screenshot](documentation/validation/css-assets-style.png) | ⚠️ Notes (if applicable) |
+| assets/css | [style.css](https://github.com/angela64711/second-milestone-project/blob/main/assets/css/style.css) | [CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=https://angela64711.github.io/second-milestone-project/assets/css/style.css&output=html) | ![screenshot](documentation/validation/css-assets-style.png) | No errors found |
 
 
 ### JavaScript
 
-⚠️ INSTRUCTIONS ⚠️
-
-If using modern JavaScript (ES6) methods, then make sure to include the following line at the very top of every single JavaScript file in your project (this should remain in your files for submission as well):
-
-`/* jshint esversion: 11 */`
-
-If you are also including jQuery (`$`), then the updated format will be:
-
-`/* jshint esversion: 11, jquery: true */`
-
-This allows the JShint validator to recognize modern ES6 methods, such as: `let`, `const`, `template literals`, `arrow functions (=>)`, etc.
-
-**IMPORTANT**: External resources
-
-Sometimes we'll write JavaScript that imports variables from other files, such as "an array of questions" from `questions.js`, which are used within the main `script.js` file elsewhere. If that's the case, the JShint validation tool doesn't know how to recognize "unused variables" that would normally be imported locally when running your own project. These warnings are acceptable, so showcase on your screenshot(s).
-
-The same thing applies when using external libraries such as Stripe, Leaflet, Bootstrap, Materialize, etc. To instantiate these components, we need to use their respective declarator. Again, the JShint validation tool would flag these as "undefined/unused variables". These warnings are acceptable, so showcase on your screenshot(s).
-
-⚠️ --- END --- ⚠️
-
 I have used the recommended [JShint Validator](https://jshint.com) to validate all of my JS files.
 
-| Directory | File | URL | Screenshot | Notes |
-| --- | --- | --- | --- | --- |
-| assets | [country-data.js](https://github.com/angela64711/second-milestone-project/blob/main/assets/js/country-data.js) |  | ![screenshot](documentation/validation/js-assets-country-data.png) | ⚠️ Notes (if applicable) |
-| assets | [script.js](https://github.com/angela64711/second-milestone-project/blob/main/assets/js/script.js) |  | ![screenshot](documentation/validation/js-assets-script.png) | ⚠️ Notes (if applicable) |
+| Directory | File | Screenshot | Notes |
+| --- | --- | --- | --- | 
+| assets/js | [country-data.js](https://github.com/angela64711/second-milestone-project/blob/main/assets/js/country-data.js) | ![screenshot](documentation/validation/js-assets-country-data.png) | No errors found |
+| assets/js | [script.js](https://github.com/angela64711/second-milestone-project/blob/main/assets/js/script.js) | ![screenshot](documentation/validation/js-assets-script.png) | No errors found |
 
 
 ## Responsiveness
@@ -73,21 +53,12 @@ I've tested my deployed project on multiple browsers to check for compatibility 
 
 | Page | Chrome | Firefox | Edge | Notes |
 | --- | --- | --- | --- | --- |
-| Home | ![screenshot](documentation/browsers/) | ![screenshot](documentation/browsers/) | ![screenshot](documentation/browsers/) | Works as expected |
-| Game | ![screenshot](documentation/browsers/) | ![screenshot](documentation/browsers/) | ![screenshot](documentation/browsers/) | Works as expected |
+| Start | ![screenshot](documentation/browsers/) | ![screenshot](documentation/browsers/) | ![screenshot](documentation/browsers/) | Works as expected |
+| Quiz | ![screenshot](documentation/browsers/) | ![screenshot](documentation/browsers/) | ![screenshot](documentation/browsers/) | Works as expected |
+| Results | ![screenshot](documentation/browsers/) | ![screenshot](documentation/browsers/) | ![screenshot](documentation/browsers/) | Works as expected |
 | 404 | ![screenshot](documentation/browsers/) | ![screenshot](documentation/browsers/) | ![screenshot](documentation/browsers/) | Works as expected |
 
 ## Lighthouse Audit
-
-⚠️ INSTRUCTIONS ⚠️
-
-Use this space to discuss testing the live/deployed site's Lighthouse Audit reports. Avoid testing the local version (Gitpod/VSCode/etc.), as this can have knock-on effects for performance. If you don't have "Lighthouse" in your Developer Tools, it can be added as an [extension](https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk).
-
-Unless your project is a single-page application (SPA), you should test Lighthouse Audit results for all of your pages, for both *mobile* and *desktop*.
-
-**IMPORTANT**: You must provide screenshots of the results, to "prove" that you've actually tested them.
-
-⚠️ --- END --- ⚠️
 
 I've tested my deployed project using the Lighthouse Audit tool to check for any major issues. Some warnings are outside of my control, and mobile results tend to be lower than desktop.
 
