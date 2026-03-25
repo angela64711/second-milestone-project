@@ -1,7 +1,7 @@
 # Testing
 
 This document outlines the testing carried out during the development of the EU Geography Quiz application. 
-Testing was performed throughout the project to ensure functionality, usability, and robustness across different scenarios and devices.
+Testing was performed throughout the project to ensure functionality, usability, accessibility, and responsiveness across different scenarios and devices.
 
 The following sections include code validation, manual testing, defensive programming checks, user story testing, responsiveness testing, accessibility checks (including contrast testing and Lighthouse audit), and cross-browser compatibility testing.
 
@@ -23,6 +23,7 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 | root | [results.html](https://github.com/angela64711/second-milestone-project/blob/main/results.html) | [HTML Validator](https://validator.w3.org/nu/?doc=https://angela64711.github.io/second-milestone-project/results.html&out=html) | ![screenshot](documentation/validation/html--results.png) | No errors found |
 
 
+
 ### CSS
 
 I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-validator) to validate all of my CSS files.
@@ -30,6 +31,7 @@ I have used the recommended [CSS Jigsaw Validator](https://jigsaw.w3.org/css-val
 | Directory | File | URL | Screenshot | Notes |
 | --- | --- | --- | --- | --- |
 | assets/css | [style.css](https://github.com/angela64711/second-milestone-project/blob/main/assets/css/style.css) | [CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=https://angela64711.github.io/second-milestone-project/assets/css/style.css&output=html) | ![screenshot](documentation/validation/css-assets-style.png) | No errors found |
+
 
 
 ### JavaScript
@@ -40,6 +42,7 @@ I have used the recommended [JShint Validator](https://jshint.com) to validate a
 | --- | --- | --- | --- | 
 | assets/js | [country-data.js](https://github.com/angela64711/second-milestone-project/blob/main/assets/js/country-data.js) | ![screenshot](documentation/validation/js-assets-country-data.png) | No errors found |
 | assets/js | [script.js](https://github.com/angela64711/second-milestone-project/blob/main/assets/js/script.js) | ![screenshot](documentation/validation/js-assets-script.png) | No errors found |
+
 
 
 ## Responsiveness
@@ -54,20 +57,24 @@ I've tested my deployed project to check for responsiveness issues.
 | 404 | ![screenshot](documentation/responsiveness/mobile-404.png) | ![screenshot](documentation/responsiveness/tablet-404.png) | ![screenshot](documentation/responsiveness/desktop-404.png) | Works as expected |
 
 
+
 ## Browser Compatibility
 
 I've tested my deployed project on multiple browsers to check for compatibility issues.
 
 | Page | Chrome | Firefox | Edge | Notes |
 | --- | --- | --- | --- | --- |
-| Start | ![screenshot](documentation/browsers/chrome-start.png) | ![screenshot](documentation/browsers/) | ![screenshot](documentation/browsers/) | Works as expected |
-| Quiz | ![screenshot](documentation/browsers/chrome-quiz.png) | ![screenshot](documentation/browsers/) | ![screenshot](documentation/browsers/) | Works as expected |
-| Results | ![screenshot](documentation/browsers/chrome-results.png) | ![screenshot](documentation/browsers/) | ![screenshot](documentation/browsers/) | Works as expected |
-| 404 | ![screenshot](documentation/browsers/chrome-404.png) | ![screenshot](documentation/browsers/) | ![screenshot](documentation/browsers/) | Works as expected |
+| Start | ![screenshot](documentation/browsers/chrome-start.png) | ![screenshot](documentation/browsers/firefox-start.png) | ![screenshot](documentation/browsers/edge-start.png) | Works as expected |
+| Quiz | ![screenshot](documentation/browsers/chrome-quiz.png) | ![screenshot](documentation/browsers/firefox-quiz.png) | ![screenshot](documentation/browsers/edge-quiz.png) | Works as expected |
+| Results | ![screenshot](documentation/browsers/chrome-results.png) | ![screenshot](documentation/browsers/firefox-results.png) | ![screenshot](documentation/browsers/edge-results.png) | Works as expected |
+| 404 | ![screenshot](documentation/browsers/chrome-404.png) | ![screenshot](documentation/browsers/firefox-404.png) | ![screenshot](documentation/browsers/edge-404.png) | Works as expected |
+
+
 
 ## Lighthouse Audit
 
-I've tested my deployed project using the Lighthouse Audit tool to check for any major issues. Some warnings are outside of my control, and mobile results tend to be lower than desktop.
+I've tested my deployed project using the Lighthouse Audit tool to check for any major issues. 
+Some warnings are outside of my control, and mobile scores tend to be lower than desktop due to performance constraints.
 
 | Page | Mobile | Desktop |
 | --- | --- | --- |
@@ -75,6 +82,7 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 | Quiz | ![screenshot](documentation/lighthouse/mobile-quiz.png) | ![screenshot](documentation/lighthouse/desktop-quiz.png) |
 | Results | ![screenshot](documentation/lighthouse/mobile-results.png) | ![screenshot](documentation/lighthouse/desktop-results.png) |
 | 404 | ![screenshot](documentation/lighthouse/mobile-404.png) | ![screenshot](documentation/lighthouse/desktop-404.png) |
+
 
 
 ## Contrast Testing
@@ -89,6 +97,7 @@ The following combinations were tested:
 All tested combinations meet WCAG AA accessibility standards.
 
 ![screenshot](documentation/colors/contrast-check.png)
+
 
 
 ## Defensive Programming
@@ -183,6 +192,7 @@ All previously closed/fixed bugs can be tracked [here](https://www.github.com/an
 
 ![screenshot](documentation/issues/fixed-bugs.png)
 
+
 ### Unfixed Bugs
 
 [![GitHub issue custom search](https://img.shields.io/github/issues-search/angela64711/second-milestone-project?query=is%3Aissue%2Bis%3Aopen%2Blabel%3Abug&label=Unfixed%20Bugs&color=red)](https://www.github.com/angela64711/second-milestone-project/issues?q=is%3Aissue+is%3Aopen+label%3Abug)
@@ -192,7 +202,8 @@ All identified issues were resolved prior to project submission, resulting in ze
 ![screenshot](documentation/issues/issues-open.png)
 
 
+
 ### Known Issues
 
- There are no remaining bugs that I am aware of, though, even after thorough testing, I cannot rule out the possibility.
+There are no remaining bugs that I am aware of. However, as with any application, undetected issues may still exist.
 
